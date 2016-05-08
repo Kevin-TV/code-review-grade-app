@@ -3,9 +3,6 @@ package io.kevinlee.tv.ep37;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @since 2016-05-08
- */
 public class GradeApp {
   public static void main(String[] args) {
     final Student student1 = new Student(1L, "Tom");
@@ -22,51 +19,44 @@ public class GradeApp {
     );
 
     for (final Score score : scores) {
-      // Student: Student(id=1, name=Tom)
       System.out.println("Student: " + score.getStudent());
-
-      //   Score: 49
       System.out.println("  Score: " + score.getScore());
-
-      //   Grade: Fail
       System.out.println("  Grade: " + score.getGrade());
     }
-
   }
 }
 
 class GradeUtil {
-  public static String grade(double score) {
-
-    /*
-     * score < 50: Fail
-     * 50 <= score < 65: Pass
-     * 65 <= score < 75: Credit
-     * 75 <= score < 85: Distinct
-     * 85 < score: High Distinction
-     */
-    throw new UnsupportedOperationException("Please implement it");
-  }
+    public static String grade(double score) {
+      if(score < 50) return "Fail";
+      if(score < 65) return "Pass";
+      if(score < 75) return "Credit";
+      if(score < 85) return "Distinct";
+      else return "High Distinction";
+    }
 }
 
 class Student {
 
   private Long id;
-
   private String name;
 
   public Student(final Long id, final String name) {
     this.id = id;
     this.name = name;
   }
+
+  @Override
+  public String toString(){
+    return name;
+  }
+
 }
 
 class Score {
 
   private Long id;
-
   private double value;
-
   private Student student;
 
   public Score(final Long id, final double value, final Student student) {
@@ -74,4 +64,15 @@ class Score {
     this.value = value;
     this.student = student;
   }
+
+  public Student getStudent() {
+    return student;
+  }
+  public double getScore(){
+    return value;
+  }
+  public String getGrade(){
+    return GradeUtil.grade(this.value);
+  }
+
 }
