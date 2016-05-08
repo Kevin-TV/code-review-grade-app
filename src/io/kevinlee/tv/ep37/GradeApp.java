@@ -3,9 +3,6 @@ package io.kevinlee.tv.ep37;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @since 2016-05-08
- */
 public class GradeApp {
   public static void main(String[] args) {
     final Student student1 = new Student(1L, "Tom");
@@ -49,6 +46,11 @@ class Student {
     this.name = name;
   }
 
+  @Override
+  public String toString(){
+    return name;
+  }
+
 }
 
 class Score {
@@ -70,7 +72,7 @@ class Score {
     return value;
   }
   public String getGrade(){
-    return GradeUtil.grade(value);
+    return GradeUtil.grade(this.value);
   }
 
 }
