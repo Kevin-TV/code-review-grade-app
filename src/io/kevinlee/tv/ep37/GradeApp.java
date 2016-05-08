@@ -45,7 +45,15 @@ class GradeUtil {
      * 75 <= score < 85: Distinct
      * 85 < score: High Distinction
      */
-    throw new UnsupportedOperationException("Please implement it");
+    if (score < 50)
+      return "Fail";
+    if (score < 65)
+      return "Pass";
+    if (score < 75)
+     return "Credit";
+    if (score < 85)
+     return "Distinct";
+    return "High Distinction";
   }
 }
 
@@ -58,6 +66,11 @@ class Student {
   public Student(final Long id, final String name) {
     this.id = id;
     this.name = name;
+  }
+
+  @Override
+  public String toString() {
+    return "Student(id = " + id + ", name = " + name + ")";
   }
 }
 
@@ -73,5 +86,17 @@ class Score {
     this.id = id;
     this.value = value;
     this.student = student;
+  }
+
+  public double getScore() {
+    return value;
+  }
+
+  public Student getStudent() {
+    return student;
+  }
+
+  public String getGrade() {
+    return GradeUtil.grade(this.value);
   }
 }
