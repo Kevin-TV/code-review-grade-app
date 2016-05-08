@@ -26,7 +26,7 @@ public class GradeApp {
       System.out.println("Student: " + score.getStudent());
 
       //   Score: 49
-      System.out.println("  Score: " + score.getValue());
+      System.out.println("  Score: " + score.getScore());
 
       //   Grade: Fail
       System.out.println("  Grade: " + score.getGrade());
@@ -88,7 +88,7 @@ class Score {
     this.student = student;
   }
 
-  public double getValue() {
+  public double getScore() {
     return value;
   }
 
